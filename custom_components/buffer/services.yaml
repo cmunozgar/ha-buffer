@@ -1,0 +1,59 @@
+create_post:
+  fields:
+    device_id:
+      selector:
+        device:
+          multiple: true
+          filter:
+            - integration: buffer
+    channel_id:
+      example: "65f1c0ffee..."
+      selector:
+        text:
+          multiple: true
+    text:
+      required: true
+      example: "Today the solar panels produced 24 kWh ☀️"
+      selector:
+        text:
+          multiline: true
+    mode:
+      default: add_to_queue
+      selector:
+        select:
+          translation_key: mode
+          options:
+            - add_to_queue
+            - share_next
+            - share_now
+            - custom_scheduled
+    due_at:
+      selector:
+        datetime:
+    image_urls:
+      example: "https://example.com/garden.jpg"
+      selector:
+        text:
+          type: url
+          multiple: true
+    save_to_draft:
+      default: false
+      selector:
+        boolean:
+
+create_idea:
+  fields:
+    config_entry_id:
+      required: true
+      selector:
+        config_entry:
+          integration: buffer
+    title:
+      example: "Weekly energy recap"
+      selector:
+        text:
+    text:
+      example: "This week the house used 12% less energy than last week."
+      selector:
+        text:
+          multiline: true

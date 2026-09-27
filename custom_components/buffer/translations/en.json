@@ -1,0 +1,108 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect Buffer",
+        "description": "Create a personal API key at {api_url} and paste it below.",
+        "data": { "api_key": "API key" },
+        "data_description": { "api_key": "Your Buffer API key. It only grants access to your own Buffer account." }
+      },
+      "organization": {
+        "title": "Choose organization",
+        "description": "Your Buffer account belongs to several organizations. Pick the one to add (you can add the others later).",
+        "data": { "organization_id": "Organization" }
+      },
+      "reauth_confirm": {
+        "title": "Re-authenticate Buffer",
+        "description": "Your Buffer API key is no longer valid. Enter a new one.",
+        "data": { "api_key": "API key" }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid API key.",
+      "cannot_connect": "Could not reach the Buffer API.",
+      "no_organizations": "This API key has no organizations.",
+      "wrong_account": "This API key does not have access to the organization that was originally set up.",
+      "unknown": "Unexpected error."
+    },
+    "abort": {
+      "already_configured": "This Buffer organization is already configured.",
+      "reauth_successful": "Re-authentication was successful."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Buffer options",
+        "data": { "scan_interval_minutes": "Polling interval" },
+        "data_description": {
+          "scan_interval_minutes": "Each poll uses one API request. Buffer allows 250 requests per day on Free/Essentials plans, so keep this at 15 minutes or more."
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "queue_size": { "name": "Queue size" },
+      "next_post": { "name": "Next post" },
+      "last_sent": { "name": "Last sent" },
+      "failed_posts": { "name": "Failed posts" },
+      "total_scheduled": { "name": "Scheduled posts" },
+      "total_failed": { "name": "Failed posts" },
+      "api_requests_remaining": { "name": "API requests remaining" }
+    },
+    "binary_sensor": {
+      "disconnected": { "name": "Disconnected" },
+      "queue_paused": { "name": "Queue paused" },
+      "queue_empty": { "name": "Queue empty" }
+    },
+    "calendar": {
+      "content_calendar": { "name": "Content calendar" }
+    },
+    "notify": {
+      "add_to_queue": { "name": "Add to queue" }
+    }
+  },
+  "selector": {
+    "mode": {
+      "options": {
+        "add_to_queue": "Add to queue",
+        "share_next": "Share next (top of queue)",
+        "share_now": "Share now",
+        "custom_scheduled": "Schedule at a specific time"
+      }
+    }
+  },
+  "services": {
+    "create_post": {
+      "name": "Create post",
+      "description": "Creates a post on one or more Buffer channels.",
+      "fields": {
+        "device_id": { "name": "Channels", "description": "Buffer channel devices to post to." },
+        "channel_id": { "name": "Channel IDs", "description": "Alternatively, raw Buffer channel IDs." },
+        "text": { "name": "Text", "description": "Post text." },
+        "mode": { "name": "Mode", "description": "How to schedule the post." },
+        "due_at": { "name": "Publish at", "description": "Specific publish time. Setting this implies 'Schedule at a specific time'." },
+        "image_urls": { "name": "Image URLs", "description": "Public, stable HTTPS URLs of images to attach. Buffer fetches them when publishing." },
+        "save_to_draft": { "name": "Save as draft", "description": "Save as a draft instead of scheduling." }
+      }
+    },
+    "create_idea": {
+      "name": "Create idea",
+      "description": "Saves an idea to Buffer's Ideas board for later review.",
+      "fields": {
+        "config_entry_id": { "name": "Organization", "description": "The Buffer organization to save the idea to." },
+        "title": { "name": "Title", "description": "Short heading for the idea." },
+        "text": { "name": "Text", "description": "Idea body." }
+      }
+    }
+  },
+  "exceptions": {
+    "unknown_channel": { "message": "Buffer channel {channel} was not found in any loaded Buffer organization." },
+    "not_a_channel_device": { "message": "Device {device} is not a Buffer channel." },
+    "due_at_required": { "message": "'Publish at' is required when mode is 'Schedule at a specific time'." },
+    "entry_not_loaded": { "message": "That Buffer organization is not loaded." },
+    "create_post_failed": { "message": "Buffer rejected the post: {error}" },
+    "create_idea_failed": { "message": "Buffer rejected the idea: {error}" }
+  }
+}

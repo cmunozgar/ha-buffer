@@ -1,0 +1,27 @@
+{
+  "entity": {
+    "sensor": {
+      "queue_size": { "default": "mdi:tray-full" },
+      "next_post": { "default": "mdi:calendar-clock" },
+      "last_sent": { "default": "mdi:send-check" },
+      "failed_posts": { "default": "mdi:alert-circle-outline" },
+      "total_scheduled": { "default": "mdi:calendar-multiple" },
+      "total_failed": { "default": "mdi:alert-circle" },
+      "api_requests_remaining": { "default": "mdi:speedometer" }
+    },
+    "binary_sensor": {
+      "queue_paused": { "default": "mdi:play-circle", "state": { "on": "mdi:pause-circle" } },
+      "queue_empty": { "default": "mdi:tray-full", "state": { "on": "mdi:tray" } }
+    },
+    "calendar": {
+      "content_calendar": { "default": "mdi:calendar-text" }
+    },
+    "notify": {
+      "add_to_queue": { "default": "mdi:tray-plus" }
+    }
+  },
+  "services": {
+    "create_post": { "service": "mdi:send-clock" },
+    "create_idea": { "service": "mdi:lightbulb-on-outline" }
+  }
+}
