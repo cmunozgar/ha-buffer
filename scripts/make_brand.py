@@ -27,7 +27,7 @@ def load(path: str, render_px: int = 2048) -> Image.Image:
     if p.suffix.lower() == ".svg":
         import cairosvg
 
-        png = cairosvg.svg2png(url=str(p), output_width=render_px)
+        png = cairosvg.svg2png(bytestring=p.read_bytes(), output_width=render_px)
         img = Image.open(io.BytesIO(png))
     else:
         img = Image.open(p)

@@ -1,3 +1,10 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="custom_components/buffer/brand/dark_logo@2x.png">
+    <img src="custom_components/buffer/brand/logo@2x.png" alt="Buffer" height="64">
+  </picture>
+</p>
+
 # Buffer for Home Assistant
 
 A custom integration that connects Home Assistant to [Buffer](https://buffer.com) through Buffer's [public GraphQL API](https://developers.buffer.com). It works in two directions:
@@ -111,6 +118,10 @@ actions:
 Buffer has **no upload endpoint**. Images must be public, direct, stable HTTPS URLs, and Buffer fetches them *when the post publishes*, not when you create it.
 
 Camera snapshots saved in `/config/www` are only reachable if your instance is exposed publicly, for example through Nabu Casa. Even then, avoid signed or expiring URLs for scheduled posts.
+
+## Brand images
+
+The Buffer logo and icon in `custom_components/buffer/brand/` come from Buffer's official brand kit. Home Assistant 2026.3 and later shows them automatically. To regenerate them from the source artwork, run `scripts/make_brand.py`.
 
 ## Development
 
