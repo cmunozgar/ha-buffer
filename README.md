@@ -1,8 +1,5 @@
 <p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="custom_components/buffer/brand/dark_logo@2x.png">
-    <img src="custom_components/buffer/brand/logo@2x.png" alt="Buffer" height="64">
-  </picture>
+  <img src="https://raw.githubusercontent.com/cmunozgar/ha-buffer/main/docs/logo.png" alt="Buffer" height="72">
 </p>
 
 # Buffer for Home Assistant
@@ -42,9 +39,12 @@ It returns the created posts as a response, so you can use `response_variable` i
 
 ## Installation
 
-1. HACS → ⋮ → Custom repositories → add `https://github.com/cmunozgar/ha-buffer`, category *Integration*, then download **Buffer**. Alternatively, copy `custom_components/buffer` into your `config/custom_components/`.
+[![Open your Home Assistant instance and open this repository inside HACS.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=cmunozgar&repository=ha-buffer&category=integration)
+[![Open your Home Assistant instance and start setting up Buffer.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=buffer)
+
+1. Click the first button above to open this repository in HACS, then download **Buffer**. Or add it manually: HACS → ⋮ → Custom repositories → `https://github.com/cmunozgar/ha-buffer`, category *Integration*. Without HACS, copy `custom_components/buffer` into your `config/custom_components/`.
 2. Restart Home Assistant.
-3. Go to Settings → Devices & services → Add integration → **Buffer**.
+3. Click the second button above, or go to Settings → Devices & services → Add integration → **Buffer**.
 4. Paste an API key from <https://publish.buffer.com/settings/api>.
    If your account has several organizations, you'll be asked to choose one. Add the integration again for each extra organization.
 
