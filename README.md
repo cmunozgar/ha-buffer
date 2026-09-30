@@ -136,3 +136,7 @@ pytest
 - `buffer.delete_post` action, and turning a calendar event into a post
 - Per-channel post metrics (`aggregatedPostMetrics`)
 - Moving `api.py` into its own PyPI package (`aiobuffer`) to allow a submission to HA core
+
+## License
+
+[MIT](LICENSE). The Buffer name and logo are trademarks of Buffer, Inc. and are not covered by this license.
