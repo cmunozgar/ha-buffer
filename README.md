@@ -9,7 +9,7 @@ A custom integration that connects Home Assistant to [Buffer](https://buffer.com
 - **Buffer → Home Assistant:** entities for your queues, the next and last posts, failed posts and disconnected channels, plus a content calendar.
 - **Home Assistant → Buffer:** actions that post to channels or save ideas from automations.
 
-> Status: early (0.1.2). Only the stable parts of the API are used: channels, posts and ideas. The experimental content-item and tag APIs are not.
+> Status: early (0.1.3). Only the stable parts of the API are used: channels, posts and ideas. The experimental content-item and tag APIs are not.
 
 ## What you get
 
