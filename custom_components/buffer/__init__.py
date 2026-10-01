@@ -38,7 +38,7 @@ async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
 
 
 async def _async_register_icons(hass: HomeAssistant) -> None:
-    if hass.http is None:
+    if hass.http is None or "frontend" not in hass.config.components:
         return
     await hass.http.async_register_static_paths(
         [StaticPathConfig(ICONS_URL, str(Path(__file__).parent / "frontend" / "buffer-icons.js"), True)]

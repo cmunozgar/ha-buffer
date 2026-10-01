@@ -1,9 +1,10 @@
 {
   "domain": "buffer",
   "name": "Buffer",
+  "after_dependencies": ["frontend"],
   "codeowners": ["@cmunozgar"],
   "config_flow": true,
-  "dependencies": ["frontend", "http"],
+  "dependencies": ["http"],
   "documentation": "https://github.com/cmunozgar/ha-buffer",
   "integration_type": "service",
   "iot_class": "cloud_polling",
