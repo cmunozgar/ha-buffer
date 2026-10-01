@@ -2,11 +2,16 @@
 
 from __future__ import annotations
 
+from pathlib import Path
+
+from homeassistant.components.frontend import add_extra_js_url
+from homeassistant.components.http import StaticPathConfig
 from homeassistant.const import CONF_API_KEY, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_validation as cv
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.typing import ConfigType
+from homeassistant.loader import async_get_integration
 
 from .api import BufferClient
 from .const import DOMAIN
@@ -22,11 +27,25 @@ PLATFORMS: list[Platform] = [
 
 CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
+ICONS_URL = f"/{DOMAIN}_static/buffer-icons.js"
+
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Register integration-wide actions."""
+    """Register integration-wide actions and the `buffer:` icon set."""
     async_setup_services(hass)
+    await _async_register_icons(hass)
     return True
+
+
+async def _async_register_icons(hass: HomeAssistant) -> None:
+    if hass.http is None:
+        return
+    await hass.http.async_register_static_paths(
+        [StaticPathConfig(ICONS_URL, str(Path(__file__).parent / "frontend" / "buffer-icons.js"), True)]
+    )
+    integration = await async_get_integration(hass, DOMAIN)
+    # The version query busts the browser cache when the icon set changes.
+    add_extra_js_url(hass, f"{ICONS_URL}?v={integration.version}")
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: BufferConfigEntry) -> bool:
